@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - LearnPolski.com</title>
+    <style>
+        body {
+            font-family: 'Ubuntu', sans-serif;
+            margin: 0;
+            padding: 0;
+
+            color: white;
+        }
+
+        .faq-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+
+            border-left: 3px solid #158c78;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .faq-answer.show {
+            display: block;
+        }
+
+        .faq-question .toggle-icon {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(0)">
+                <span>What courses does LearnPolski.com offer?</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer" id="answer-0">
+                We offer group courses in Polish from beginner level (A1) to advanced level (B2). Our course formats
+                include general and intensive group courses, grammar, writing, phonetics and pronunciation, exam
+                preparation, conversation and medical language courses.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(1)">
+                <span>When does the class take place?</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer" id="answer-1">
+                The classes take place at different times. Group courses have fixed schedules.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(2)">
+                <span>Do you also offer in-person courses?</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer" id="answer-2">
+                No, we only offer online courses.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(3)">
+                <span>I don’t know my level. What should I do now?</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer" id="answer-3">
+                No problem! Each course syllabus is described in detail in the description section and you can assess
+                whether you are already familiar with the material covered.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(4)">
+                <span>How much does the course cost?</span>
+                <span class="toggle-icon">+</span>
+            </div>
+            <div class="faq-answer" id="answer-4">
+                The cost of the courses varies depending on the length and type of course chosen. Please visit the
+                course information section for more details.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(index) {
+            // Hide all answers
+            var allAnswers = document.querySelectorAll('.faq-answer');
+            var allIcons = document.querySelectorAll('.toggle-icon');
+
+            allAnswers.forEach(function (answer) {
+                answer.classList.remove('show');
+            });
+            allIcons.forEach(function (icon) {
+                icon.textContent = "+";
+            });
+
+            // Show the clicked answer
+            var answer = document.getElementById("answer-" + index);
+            var icon = document.getElementsByClassName("toggle-icon")[index];
+
+            if (!answer.classList.contains('show')) {
+                answer.classList.add('show');
+                icon.textContent = "-";
+            }
+        }
+
+        // Automatically show the first answer by default
+        document.getElementById("answer-0").classList.add("show");
+        document.getElementsByClassName("toggle-icon")[0].textContent = "-";
+    </script>
+
+</body>
+
+</html>
